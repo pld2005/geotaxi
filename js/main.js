@@ -36,8 +36,13 @@ socket.on('welcome', function(msg) {
 
 socket.on('error', function(msg) {
   if (msg.userNameInUse) {
-      setFeedback("<span style='color: red'> Username already in use. Try another name.</span>");
+      alert("Username already in use. Try another name");
   }
+});
+
+socket.on('disconnect', function() {
+  console.log('disconnected');
+  alert("Disconnected!");
 });
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -45,6 +50,7 @@ socket.on('error', function(msg) {
         usuario.id = $("#usuario").val();
         usuario.matricula = $("#matricula").val();
         usuario.pass = $("#password").val();
+
 
 
         //myUserName = usuario.id;
@@ -93,13 +99,6 @@ socket.on('error', function(msg) {
         
     }
 
-
-   /* function viajeAceptado(){
-
-        $("#panelenproceso").removeClass('ocultar');
-        $("#btnocupado").addClass('ocultarbtn');
-        $("#btnlibre").removeClass('ocultar');
-    }   */     
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
