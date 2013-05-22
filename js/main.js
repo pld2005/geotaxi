@@ -174,7 +174,7 @@ socket.on('error', function(msg) {
                                         'bounds': true,
                                         'icon': image });
                     } else {
-                        sendStatus({"message":latlng});
+                        sendStatus({"message": actualizaReloj() + " " + latlng.latitude + " " + latlng.longitude});
                         self.get('markers').client.setPosition(latlng);
                         map.panTo(latlng);
                     }
@@ -187,6 +187,34 @@ socket.on('error', function(msg) {
 
     });
 
+function actualizaReloj(){ 
+ 
+/* Capturamos la Hora, los minutos y los segundos */
+marcacion = new Date() 
+ 
+/* Capturamos la Hora */
+Hora = marcacion.getHours() 
+ 
+/* Capturamos los Minutos */
+Minutos = marcacion.getMinutes() 
+ 
+/* Capturamos los Segundos */
+Segundos = marcacion.getSeconds() 
+ 
+/* Si la Hora, los Minutos o los Segundos
+Son Menores o igual a 9, le añadimos un 0 */
+ 
+if (Hora<=9)
+Hora = "0" + Hora
+ 
+if (Minutos<=9)
+Minutos = "0" + Minutos
+ 
+if (Segundos<=9)
+Segundos = "0" + Segundos
+
+return  Hora + ":" + Minutos + ":" + Segundos
+}
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     $(document).on('pageinit', "#page_aceptaviaje",  function(){
