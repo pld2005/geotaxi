@@ -11,7 +11,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 
     
-
+var connected = false;
 var usuario ={
     id : 0,
     matricula : '',
@@ -28,6 +28,7 @@ socket.on('message', function(msg) {
 });
 
 socket.on('welcome', function(msg) {
+    connected=true;
     /*setFeedback("<span style='color: green'> Username available. You can begin chatting.</span>");
     setCurrentUsers(msg.currentUsers)
     enableMsgInput(true);
@@ -35,14 +36,17 @@ socket.on('welcome', function(msg) {
 });
 
 socket.on('error', function(msg) {
-  if (msg.userNameInUse) {
-      alert("Username already in use. Try another name");
-  }
+    if (msg.userNameInUse) {
+        connected = false;
+        alert("Username already in use. Try another name");
+    }
 });
 
 socket.on('disconnect', function() {
-  console.log('disconnected');
-  alert("Disconnected!");
+    connected = false;
+    console.log('disconnected');
+    alert("Disconnected!");
+    setUsername();
 });
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
