@@ -174,7 +174,7 @@ socket.on('error', function(msg) {
                                         'bounds': true,
                                         'icon': image });
                     } else {
-                        sendStatus({"message": actualizaReloj() + " " + latlng.lat + " " + latlng.lng});
+                        sendStatus({"message": actualizaReloj() + " " + latlng});
                         self.get('markers').client.setPosition(latlng);
                         map.panTo(latlng);
                     }
