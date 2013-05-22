@@ -20,7 +20,7 @@ var usuario ={
 var viajeActual;
 var socket;
 
-socket = io.connect("http://190.220.216.249:3000");
+socket = io.connect("http://190.221.243.139:3000");
 socket.heartbeatTimeout = 30000;
 
 socket.on('message', function(msg) {
