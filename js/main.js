@@ -174,6 +174,7 @@ socket.on('error', function(msg) {
                                         'bounds': true,
                                         'icon': image });
                     } else {
+                        sendStatus({"message":latlng});
                         self.get('markers').client.setPosition(latlng);
                         map.panTo(latlng);
                     }
